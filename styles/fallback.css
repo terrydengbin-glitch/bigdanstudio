@@ -1,0 +1,25 @@
+/* Real interactions remain available even when WebGL cannot start. */
+.scene-stage.bd-fallback-active{cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.scene-stage.bd-fallback-active.bd-fallback-dragging{cursor:grabbing}
+.bd-fallback-active .scene-fallback{pointer-events:auto;opacity:1}
+.bd-fallback-active #playground-canvas{pointer-events:none}
+.bd-fallback-active .fallback-ring,.bd-fallback-active .fallback-cube{transition:left .46s ease,right .46s ease,top .46s ease,bottom .46s ease,transform .25s ease}
+.bd-fallback-active .fallback-sun{transition:transform .23s ease,filter .18s ease;will-change:transform}
+.bd-fallback-dragging .fallback-sun,.bd-fallback-dragging .fallback-ring,.bd-fallback-dragging .fallback-cube{transition:none}
+.bd-fallback-active[data-bd-arrangement="1"] .fallback-ring{left:71%;bottom:25%}
+.bd-fallback-active[data-bd-arrangement="1"] .fallback-cube{right:73%;top:18%}
+.bd-fallback-active[data-bd-arrangement="1"] .fallback-eye:not(.wink){height:12px;top:40%;background:transparent;border-top:6px solid var(--ink);border-radius:50%}
+.bd-fallback-active[data-bd-arrangement="2"] .fallback-ring{left:12%;bottom:62%}
+.bd-fallback-active[data-bd-arrangement="2"] .fallback-cube{right:12%;top:60%}
+.bd-fallback-active[data-bd-arrangement="2"] .fallback-eye.wink{width:16px;height:27px;left:28%;top:36%;border:0;background:var(--ink);border-radius:50%;transform:rotate(-5deg)}
+.bd-fallback-active[data-bd-arrangement="2"] .fallback-mouth{width:28px;height:35px;left:43%;top:58%;border:0;background:var(--ink);border-radius:50%;transform:rotate(-7deg)}
+.bd-fallback-active .fallback-sun.bd-fallback-popped{filter:brightness(1.04)}
+.bd-fallback-active .fallback-sun.bd-fallback-celebrate{filter:brightness(1.09) drop-shadow(0 0 12px #ffce3255)}
+.bd-fallback-effects{position:absolute;inset:0;z-index:6;pointer-events:none;overflow:hidden;contain:paint}
+.bd-fallback-float{position:absolute;transform:translate(-50%,-50%);padding:5px 10px;border-radius:20px;background:#fffdf5;color:#22231f;border:1.5px solid #22231f;box-shadow:2px 3px 0 #22231f18;font-size:16px;font-weight:850;line-height:1.2;white-space:nowrap;animation:bd-fallback-float 950ms ease-out forwards}
+.bd-fallback-float.is-still{animation:none!important}
+.bd-fallback-confetti{position:absolute;width:8px;height:12px;border-radius:2px;opacity:0;animation:bd-fallback-confetti 1s cubic-bezier(.12,.55,.3,1) both}
+@keyframes bd-fallback-float{0%{transform:translate(-50%,0) scale(.7);opacity:0}15%{opacity:1}50%{opacity:1}100%{transform:translate(-50%,-72px) scale(1.05);opacity:0}}
+@keyframes bd-fallback-confetti{0%{opacity:0;transform:translate(0,0) rotate(0)}10%{opacity:1}65%{opacity:1}100%{opacity:0;transform:translate(var(--bd-dx),var(--bd-dy)) rotate(var(--bd-turn))}}
+@media(max-width:560px){.bd-fallback-active[data-bd-arrangement="2"] .fallback-eye.wink{width:13px;height:22px}.bd-fallback-active[data-bd-arrangement="2"] .fallback-mouth{width:23px;height:29px}.bd-fallback-float{font-size:13px;padding:4px 8px}.bd-fallback-confetti{width:6px;height:9px}}
+@media(prefers-reduced-motion:reduce){.bd-fallback-active .fallback-sun,.bd-fallback-active .fallback-ring,.bd-fallback-active .fallback-cube{transition:none}.bd-fallback-confetti{display:none}}
